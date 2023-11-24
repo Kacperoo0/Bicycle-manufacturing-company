@@ -6,6 +6,7 @@ import com.company.models.Manufacturer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,13 +14,21 @@ public class Main {
 
         List<Bicycle> bicycles = new ArrayList<>();
         List<Manufacturer> manufacturers = new ArrayList<>();
+        List<ElectricBicycle> electricBicycles = new ArrayList<>();
 
-        Bicycle bicycle = new Bicycle("Mountain Bike", 500.0, "Red", "Large");
+        Scanner scanner = new Scanner(System.in);
+
+
+        Bicycle bicycle = new Bicycle("Bike", 600.0, "Blue", "Medium");
+        Bicycle bicycle1 = new Bicycle("Bike", 700.0, "Purple", "Medium");
+        Bicycle bicycle2 = new Bicycle("Bike", 900.0, "Green", "Medium");
         Bicycle mountainBike = new Bicycle("Mountain Bike", 500.0, "Red", "Large");
         ElectricBicycle electricBike = new ElectricBicycle("E-Bike", 1200.0, "Black", "Medium", 500);
         ElectricBicycle electricBicycle = new ElectricBicycle("E-Bike", 1200.0, "Black", "Medium", 500);
 
         bicycles.add(mountainBike);
+        bicycles.add(bicycle1);
+        bicycles.add(bicycle2);
         bicycles.add(new Bicycle("Road Bike", 700.0, "Blue", "Medium"));
         bicycles.add(electricBike);
 
@@ -86,7 +95,51 @@ public class Main {
         System.out.println("Color: " + electricBicycle.getColor());
         System.out.println("Size: " + electricBicycle.getSize());
         System.out.println("Battery Capacity: " + electricBicycle.getBatteryCapacity() + " Wh");
+
+        System.out.println("===================================================");
+        System.out.println("\nEnter details for a new Electric Bicycle:");
+
+        System.out.print("Enter model: ");
+        String newModel = scanner.nextLine();
+        System.out.print("Enter price: ");
+        double newPrice = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.print("Enter color: ");
+        String newColor = scanner.nextLine();
+        System.out.print("Enter size: ");
+        String newSize = scanner.nextLine();
+        Bicycle newBicycle = new Bicycle(newModel, newPrice, newColor, newSize);
+        bicycles.add(newBicycle);
+
+        System.out.println("\nBicycles Details");
+        for (Bicycle bike : bicycles) {
+            System.out.println("Model: " + bike.getModel());
+            System.out.println("Price: $" + bike.getPrice());
+            System.out.println("Color: " + bike.getColor());
+            System.out.println("Size: " + bike.getSize());
+            System.out.println("-------------");
+        }
+
+        System.out.println("===================================================");
+        System.out.print("Enter manufacturer name: ");
+        String manufacturerName = scanner.nextLine();
+        System.out.print("Enter manufacturer address: ");
+        String manufacturerAddress = scanner.nextLine();
+        System.out.print("Enter manufacturer contact info: ");
+        String manufacturerContactInfo = scanner.nextLine();
+        Manufacturer newManufacturer = new Manufacturer(manufacturerName, manufacturerAddress, manufacturerContactInfo);
+        manufacturers.add(newManufacturer);
+        System.out.println("\nManufacturers and Their Bicycles:");
+        for (Manufacturer manufacturer : manufacturers) {
+            System.out.println("Manufacturer Name: " + manufacturer.getName());
+            System.out.println("Manufacturer Address: " + manufacturer.getAddress());
+            System.out.println("Manufacturer Contact Info: " + manufacturer.getContactInfo());
+            System.out.println("-------------");
+
+
+        }
     }
 }
+
 
 
