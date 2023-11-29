@@ -1,6 +1,7 @@
 package com.company.models;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Manufacturer {
@@ -30,6 +31,10 @@ public class Manufacturer {
 
     public String getContactInfo() {
         return contactInfo;
+    }
+
+    public List<Bicycle> getInventory() {
+        return inventory;
     }
 
     public void setName(String name) {
@@ -75,6 +80,19 @@ public class Manufacturer {
         } else {
             System.out.println("Bicycle not found in inventory: " + bicycle.toString());
         }
+    }
+
+    public void reserveAndRemoveBicycle(String modelToReserve) {
+        Iterator<Bicycle> iterator = inventory.iterator();
+        while (iterator.hasNext()) {
+            Bicycle bike = iterator.next();
+            if (bike.getModel().equalsIgnoreCase(modelToReserve)) {
+                System.out.println("Bicycle reserved: " + bike.getModel());
+                iterator.remove();
+                return;
+            }
+        }
+        System.out.println("Bicycle not found: " + modelToReserve);
     }
 
 

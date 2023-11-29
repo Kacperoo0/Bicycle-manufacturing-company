@@ -20,8 +20,8 @@ public class Main {
 
 
         Bicycle bicycle = new Bicycle("Bike", 600.0, "Blue", "Medium");
-        Bicycle bicycle1 = new Bicycle("Bike", 700.0, "Purple", "Medium");
-        Bicycle bicycle2 = new Bicycle("Bike", 900.0, "Green", "Medium");
+        Bicycle bicycle1 = new Bicycle("Bike1", 700.0, "Purple", "Medium");
+        Bicycle bicycle2 = new Bicycle("Bike2", 900.0, "Green", "Medium");
         Bicycle mountainBike = new Bicycle("Mountain Bike", 500.0, "Red", "Large");
         ElectricBicycle electricBike = new ElectricBicycle("E-Bike", 1200.0, "Black", "Medium", 500);
         ElectricBicycle electricBicycle = new ElectricBicycle("E-Bike", 1200.0, "Black", "Medium", 500);
@@ -136,10 +136,61 @@ public class Main {
             System.out.println("Manufacturer Contact Info: " + manufacturer.getContactInfo());
             System.out.println("-------------");
 
+            List<Bicycle> inventory = manufacturer.getInventory();
+            for (Bicycle bike : inventory) {
+                System.out.println("Model: " + bike.getModel());
+                System.out.println("Price: $" + bike.getPrice());
+                System.out.println("Color: " + bike.getColor());
+                System.out.println("Size: " + bike.getSize());
+
+                if (bike instanceof ElectricBicycle) {
+                    ElectricBicycle electricBicycle1 = (ElectricBicycle) bike;
+                    System.out.println("Battery Capacity: " + electricBicycle1.getBatteryCapacity() + " Wh");
+                }
+
+                System.out.println("-------------");
+            }
+
+
+        }
+
+
+        System.out.print("\nEnter the model of the bicycle to reserve and remove: ");
+        String modelToReserve = scanner.nextLine();
+
+
+        newManufacturer.reserveAndRemoveBicycle(modelToReserve);
+
+
+        System.out.println("\nManufacturers and Their Bicycles (After Reservation):");
+        for (Manufacturer manufacturer : manufacturers) {
+            System.out.println("Manufacturer Name: " + manufacturer.getName());
+            System.out.println("Manufacturer Address: " + manufacturer.getAddress());
+            System.out.println("Manufacturer Contact Info: " + manufacturer.getContactInfo());
+            System.out.println("-------------");
+
+            List<Bicycle> updatedInventory = manufacturer.getInventory();
+            for (Bicycle updatedBike : updatedInventory) {
+                System.out.println("Model: " + updatedBike.getModel());
+                System.out.println("Price: $" + updatedBike.getPrice());
+                System.out.println("Color: " + updatedBike.getColor());
+                System.out.println("Size: " + updatedBike.getSize());
+                System.out.println("-------------");
+
+                if (updatedBike instanceof ElectricBicycle) {
+                    ElectricBicycle updatedElectricBike = (ElectricBicycle) updatedBike;
+                    System.out.println("Battery Capacity: " + updatedElectricBike.getBatteryCapacity() + " Wh");
+                }
+
+                System.out.println("-------------");
+            }
+
+
+        }
 
         }
     }
-}
+
 
 
 
