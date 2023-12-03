@@ -1,20 +1,20 @@
 package com.company.models;
 
-import java.util.List;
+
 
 public class Customers {
     private String firstName;
     private String lastName;
     private String address;
     private String contactInfo;
-    private List<Bicycle> purchasedBicycles;
 
-    public Customers(String firstName, String lastName, String address, String contactInfo, List<Bicycle> purchasedBicycles) {
+
+    public Customers(String firstName, String lastName, String address, String contactInfo) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.contactInfo = contactInfo;
-        this.purchasedBicycles = purchasedBicycles;
+
     }
 
     public String getFirstName() {
@@ -33,9 +33,7 @@ public class Customers {
         return contactInfo;
     }
 
-    public List<Bicycle> getPurchasedBicycles() {
-        return purchasedBicycles;
-    }
+
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -53,11 +51,4 @@ public class Customers {
         this.contactInfo = contactInfo;
     }
 
-    public void setPurchasedBicycles(List<Bicycle> purchasedBicycles) {
-        this.purchasedBicycles = purchasedBicycles;
-    }
-
-    public void addPurchasedBicycle(Bicycle bicycle) {
-        purchasedBicycles.add(bicycle);
-    }
 }

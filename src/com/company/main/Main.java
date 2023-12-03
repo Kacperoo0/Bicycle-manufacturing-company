@@ -1,10 +1,12 @@
 package com.company.main;
 
 import com.company.models.Bicycle;
+import com.company.models.Customers;
 import com.company.models.ElectricBicycle;
 import com.company.models.Manufacturer;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,6 +14,8 @@ public class Main {
 
     static List<Bicycle> bicycles = new ArrayList<>();
     static List<Manufacturer> manufacturers = new ArrayList<>();
+
+    static List<Customers> customers = new ArrayList<>();
     public static void main(String[] args) {
 
         bicycles = initializeBicycles();
@@ -20,17 +24,17 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
 
-        Bicycle bicycle = new Bicycle("Bike", 600.0, "Blue", "Medium");
-        Bicycle bicycle1 = new Bicycle("Bike1", 700.0, "Purple", "Medium");
-        Bicycle bicycle2 = new Bicycle("Bike2", 900.0, "Green", "Medium");
-        Bicycle mountainBike = new Bicycle("Mountain Bike", 500.0, "Red", "Large");
-        ElectricBicycle electricBike = new ElectricBicycle("E-Bike", 1200.0, "Black", "Medium", 500);
-        ElectricBicycle electricBicycle = new ElectricBicycle("E-Bike", 1200.0, "Black", "Medium", 500);
+        Bicycle bicycle = new Bicycle("Bike", 600.0, "Blue", "Medium", 1);
+        Bicycle bicycle1 = new Bicycle("Bike1", 700.0, "Purple", "Medium",2);
+        Bicycle bicycle2 = new Bicycle("Bike2", 900.0, "Green", "Medium",3);
+        Bicycle mountainBike = new Bicycle("Mountain Bike", 500.0, "Red", "Large",4);
+        ElectricBicycle electricBike = new ElectricBicycle("E-Bike", 1200.0, "Black", "Medium",5, 500);
+        ElectricBicycle electricBicycle = new ElectricBicycle("E-Bike", 1200.0, "Black", "Medium", 6, 500);
 
         bicycles.add(mountainBike);
         bicycles.add(bicycle1);
         bicycles.add(bicycle2);
-        bicycles.add(new Bicycle("Road Bike", 700.0, "Blue", "Medium"));
+        bicycles.add(new Bicycle("Road Bike", 700.0, "Blue", "Medium", 7));
         bicycles.add(electricBike);
 
 
@@ -96,65 +100,67 @@ public class Main {
 //        System.out.println("Size: " + electricBicycle.getSize());
 //        System.out.println("Battery Capacity: " + electricBicycle.getBatteryCapacity() + " Wh");
 
-        System.out.println("===================================================");
-        System.out.println("\nEnter details for a new Bicycle:");
+//        System.out.println("===================================================");
+//        System.out.println("\nEnter details for a new Bicycle:");
+//
+//        System.out.print("Enter model: ");
+//        String newModel = scanner.nextLine();
+//        System.out.print("Enter price: ");
+//        double newPrice = scanner.nextDouble();
+//        scanner.nextLine();
+//        System.out.print("Enter color: ");
+//        String newColor = scanner.nextLine();
+//        System.out.print("Enter size: ");
+//        String newSize = scanner.nextLine();
+//        System.out.print("Enter number: ");
+//        int newNumber = scanner.nextInt();
+//        Bicycle newBicycle = new Bicycle(newModel, newPrice, newColor, newSize, newNumber);
+//        bicycles.add(newBicycle);
+//
+//        System.out.println("\nBicycles Details");
+//        for (Bicycle bike : bicycles) {
+//            System.out.println("Model: " + bike.getModel());
+//            System.out.println("Price: $" + bike.getPrice());
+//            System.out.println("Color: " + bike.getColor());
+//            System.out.println("Size: " + bike.getSize());
+//            System.out.println("-------------");
+//        }
 
-        System.out.print("Enter model: ");
-        String newModel = scanner.nextLine();
-        System.out.print("Enter price: ");
-        double newPrice = scanner.nextDouble();
-        scanner.nextLine();
-        System.out.print("Enter color: ");
-        String newColor = scanner.nextLine();
-        System.out.print("Enter size: ");
-        String newSize = scanner.nextLine();
-        Bicycle newBicycle = new Bicycle(newModel, newPrice, newColor, newSize);
-        bicycles.add(newBicycle);
-
-        System.out.println("\nBicycles Details");
-        for (Bicycle bike : bicycles) {
-            System.out.println("Model: " + bike.getModel());
-            System.out.println("Price: $" + bike.getPrice());
-            System.out.println("Color: " + bike.getColor());
-            System.out.println("Size: " + bike.getSize());
-            System.out.println("-------------");
-        }
-
-        System.out.println("===================================================");
-        System.out.print("Enter manufacturer name: ");
-        String manufacturerName = scanner.nextLine();
-        System.out.print("Enter manufacturer address: ");
-        String manufacturerAddress = scanner.nextLine();
-        System.out.print("Enter manufacturer contact info: ");
-        String manufacturerContactInfo = scanner.nextLine();
-        Manufacturer newManufacturer = new Manufacturer(manufacturerName, manufacturerAddress, manufacturerContactInfo);
-        manufacturers.add(newManufacturer);
-        System.out.println("\nManufacturers and Their Bicycles:");
-        for (Manufacturer manufacturer : manufacturers) {
-            System.out.println("Manufacturer Name: " + manufacturer.getName());
-            System.out.println("Manufacturer Address: " + manufacturer.getAddress());
-            System.out.println("Manufacturer Contact Info: " + manufacturer.getContactInfo());
-            System.out.println("-------------");
-
-            List<Bicycle> inventory = manufacturer.getInventory();
-            for (Bicycle bike : inventory) {
-                System.out.println("Model: " + bike.getModel());
-                System.out.println("Price: $" + bike.getPrice());
-                System.out.println("Color: " + bike.getColor());
-                System.out.println("Size: " + bike.getSize());
-
-                if (bike instanceof ElectricBicycle electricBicycle1) {
-                    System.out.println("Battery Capacity: " + electricBicycle1.getBatteryCapacity() + " Wh");
-                }
-
-                System.out.println("-------------");
-            }
+//        System.out.println("===================================================");
+//        System.out.print("Enter manufacturer name: ");
+//        String manufacturerName = scanner.nextLine();
+//        System.out.print("Enter manufacturer address: ");
+//        String manufacturerAddress = scanner.nextLine();
+//        System.out.print("Enter manufacturer contact info: ");
+//        String manufacturerContactInfo = scanner.nextLine();
+//        Manufacturer newManufacturer = new Manufacturer(manufacturerName, manufacturerAddress, manufacturerContactInfo);
+//        manufacturers.add(newManufacturer);
+//        System.out.println("\nManufacturers and Their Bicycles:");
+//        for (Manufacturer manufacturer : manufacturers) {
+//            System.out.println("Manufacturer Name: " + manufacturer.getName());
+//            System.out.println("Manufacturer Address: " + manufacturer.getAddress());
+//            System.out.println("Manufacturer Contact Info: " + manufacturer.getContactInfo());
+//            System.out.println("-------------");
+//
+//            List<Bicycle> inventory = manufacturer.getInventory();
+//            for (Bicycle bike : inventory) {
+//                System.out.println("Model: " + bike.getModel());
+//                System.out.println("Price: $" + bike.getPrice());
+//                System.out.println("Color: " + bike.getColor());
+//                System.out.println("Size: " + bike.getSize());
+//
+//                if (bike instanceof ElectricBicycle electricBicycle1) {
+//                    System.out.println("Battery Capacity: " + electricBicycle1.getBatteryCapacity() + " Wh");
+//                }
+//
+//                System.out.println("-------------");
+//            }
+//
+//
+//        }
 
 
-        }
-
-
-        Scanner scanners = new Scanner(System.in);
+//        Scanner scanners = new Scanner(System.in);
         int choice;
 
         do {
@@ -162,11 +168,13 @@ public class Main {
             System.out.println("1. Wyświetl listę wszystkich dostępnych rowerów");
             System.out.println("2. Wyświetl listę wszystkich producentów");
             System.out.println("3. Stwórz własny rower");
-            System.out.println("4. Zakończ");
+            System.out.println("4. Rezerwuj rower");
+            System.out.println("5. Stwórz konto");
+            System.out.println("6. Zakończ");
 
             System.out.print("Wybierz opcję: ");
-            choice = scanners.nextInt();
-            scanners.nextLine();
+            choice = scanner.nextInt();
+            scanner.nextLine();
 
             switch (choice) {
                 case 1:
@@ -179,14 +187,39 @@ public class Main {
                     createCustomBicycle();
                     break;
                 case 4:
+                    reserveBicycle();
+                    break;
+                case 5:
+                    createCustomerAccount();
+                    break;
+                case 6:
                     System.out.println("Program zakończony.");
                     break;
                 default:
                     System.out.println("Niepoprawny wybór. Wybierz ponownie.");
             }
-        } while (choice != 4);
+        } while (choice != 6);
     }
 
+    private static void reserveBicycle() {
+        displayAllBicycles();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Podaj numer roweru do zarezerwowania: ");
+        int bicycleNumber = scanner.nextInt();
+
+        Iterator<Bicycle> iterator = bicycles.iterator();
+        while (iterator.hasNext()) {
+            Bicycle bicycle = iterator.next();
+            if (bicycle.getNumber() == bicycleNumber) {
+                iterator.remove();
+                System.out.println("Rower został zarezerwowany: " + bicycle);
+                return;
+            }
+        }
+
+        System.out.println("Nie znaleziono roweru o numerze " + bicycleNumber);
+    }
 
 
     private static void displayAllBicycles() {
@@ -220,6 +253,9 @@ public class Main {
         System.out.print("Podaj rozmiar roweru: ");
         String size = scanner.nextLine();
 
+        System.out.print("Podaj numer roweru: ");
+        int number = scanner.nextInt();
+        scanner.nextLine();
         System.out.print("Czy to rower elektryczny? (Tak/Nie): ");
         boolean isElectric = scanner.nextLine().equalsIgnoreCase("Tak");
 
@@ -228,9 +264,9 @@ public class Main {
         if (isElectric) {
             System.out.print("Podaj pojemność baterii roweru elektrycznego: ");
             int batteryCapacity = scanner.nextInt();
-            newBicycle = new ElectricBicycle(model, price, color, size, batteryCapacity);
+            newBicycle = new ElectricBicycle(model, price, color, size, number,batteryCapacity);
         } else {
-            newBicycle = new Bicycle(model, price, color, size);
+            newBicycle = new Bicycle(model, price, color, size, number);
         }
 
 
@@ -239,15 +275,35 @@ public class Main {
         System.out.println("Nowy rower został dodany: " + newBicycle);
     }
 
+    public static void createCustomerAccount() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Podaj swoje imie: ");
+        String firstName = scanner.next();
+
+        System.out.print("Podaj swoje nazwisko: ");
+        String lastName = scanner.next();
+
+        System.out.print("Podaj swoj adress: ");
+        String address = scanner.next();
+
+        System.out.print("Podaj preferowana metode kontaktu: ");
+        String contactInfo = scanner.next();
+
+        Customers newCustomer = new Customers(firstName, lastName, address, contactInfo);
+        customers.add(newCustomer);
+        System.out.println("Konto stworzone pomyslnie.");
+    }
+
     private static List<Bicycle> initializeBicycles() {
         List<Bicycle> bicycles = new ArrayList<>();
-        bicycles.add(new Bicycle("Model A", 300, "Blue", "M"));
-        bicycles.add(new Bicycle("Model B", 400, "Red", "L"));
-        bicycles.add(new Bicycle("Mountain Bike", 600, "Green", "L"));
-        bicycles.add(new Bicycle("Road Bike", 800, "Black", "M"));
-        bicycles.add(new Bicycle("City Bike", 500, "Silver", "S"));
-        bicycles.add(new Bicycle("Hybrid Bike", 700, "Blue", "XL"));
-        bicycles.add(new ElectricBicycle("Electric Commuter", 1200, "White", "M", 500));
+        bicycles.add(new Bicycle("Model A", 300, "Blue", "M",8));
+        bicycles.add(new Bicycle("Model B", 400, "Red", "L",9));
+        bicycles.add(new Bicycle("Mountain Bike", 600, "Green", "L",10));
+        bicycles.add(new Bicycle("Road Bike", 800, "Black", "M",11));
+        bicycles.add(new Bicycle("City Bike", 500, "Silver", "S",12));
+        bicycles.add(new Bicycle("Hybrid Bike", 700, "Blue", "XL",13));
+        bicycles.add(new ElectricBicycle("Electric Commuter", 1200, "White", "M", 14,500));
         return bicycles;
     }
 

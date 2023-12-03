@@ -1,7 +1,6 @@
 package com.company.models;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Manufacturer {
@@ -9,11 +8,12 @@ public class Manufacturer {
     private String address;
     private String contactInfo;
     private List<Bicycle> inventory;
-    private static int totalBicyclesProduced;
+
+//    private static int totalBicyclesProduced;
 
     public Manufacturer(String name, String address, String contactInfo) {
         if (name == null || address == null || contactInfo == null || name.isEmpty() || address.isEmpty() || contactInfo.isEmpty()) {
-            throw new IllegalArgumentException("Invalid input for Manufacturer");
+            throw new IllegalArgumentException("Niepoprawne dane");
         }
         this.name = name;
         this.address = address;
@@ -58,45 +58,45 @@ public class Manufacturer {
                 '}';
     }
 
-    public static void setTotalBicyclesProduced(int newValue) {
-        totalBicyclesProduced = newValue;
-    }
-
-    public void addBicycle(Bicycle bicycle) {
-        if (!inventory.contains(bicycle)) {
-            inventory.add(bicycle);
-            totalBicyclesProduced++;
-            System.out.println("Added bicycle to inventory: " + bicycle.toString());
-        } else {
-            System.out.println("Bicycle is already in inventory: " + bicycle.toString());
-        }
-    }
-
-    public void removeBicycle(Bicycle bicycle) {
-        if (inventory.contains(bicycle)) {
-            inventory.remove(bicycle);
-            totalBicyclesProduced--;
-            System.out.println("Removed bicycle from inventory: " + bicycle.toString());
-        } else {
-            System.out.println("Bicycle not found in inventory: " + bicycle.toString());
-        }
-    }
-
-    public void reserveAndRemoveBicycle(String modelToReserve) {
-        Iterator<Bicycle> iterator = inventory.iterator();
-        while (iterator.hasNext()) {
-            Bicycle bike = iterator.next();
-            if (bike.getModel().equalsIgnoreCase(modelToReserve)) {
-                System.out.println("Bicycle reserved: " + bike.getModel());
-                iterator.remove();
-                return;
-            }
-        }
-        System.out.println("Bicycle not found: " + modelToReserve);
-    }
-
-
-    public static int getTotalBicyclesProduced() {
-        return totalBicyclesProduced;
-    }
+//    public static void setTotalBicyclesProduced(int newValue) {
+//        totalBicyclesProduced = newValue;
+//    }
+//
+//    public void addBicycle(Bicycle bicycle) {
+//        if (!inventory.contains(bicycle)) {
+//            inventory.add(bicycle);
+//            totalBicyclesProduced++;
+//            System.out.println("Added bicycle to inventory: " + bicycle.toString());
+//        } else {
+//            System.out.println("Bicycle is already in inventory: " + bicycle.toString());
+//        }
+//    }
+//
+//    public void removeBicycle(Bicycle bicycle) {
+//        if (inventory.contains(bicycle)) {
+//            inventory.remove(bicycle);
+//            totalBicyclesProduced--;
+//            System.out.println("Removed bicycle from inventory: " + bicycle.toString());
+//        } else {
+//            System.out.println("Bicycle not found in inventory: " + bicycle.toString());
+//        }
+//    }
+//
+//    public void reserveAndRemoveBicycle(String modelToReserve) {
+//        Iterator<Bicycle> iterator = inventory.iterator();
+//        while (iterator.hasNext()) {
+//            Bicycle bike = iterator.next();
+//            if (bike.getModel().equalsIgnoreCase(modelToReserve)) {
+//                System.out.println("Bicycle reserved: " + bike.getModel());
+//                iterator.remove();
+//                return;
+//            }
+//        }
+//        System.out.println("Bicycle not found: " + modelToReserve);
+//    }
+//
+//
+//    public static int getTotalBicyclesProduced() {
+//        return totalBicyclesProduced;
+//    }
 }

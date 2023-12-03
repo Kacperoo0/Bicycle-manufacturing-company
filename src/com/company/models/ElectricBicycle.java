@@ -3,10 +3,10 @@ package com.company.models;
 public class ElectricBicycle extends Bicycle {
     private int batteryCapacity;
 
-    public ElectricBicycle(String model, double price, String color, String size, int batteryCapacity) {
-        super(model, price, color, size);
+    public ElectricBicycle(String model, double price, String color, String size, int number ,int batteryCapacity) {
+        super(model, price, color, size, number);
         if (batteryCapacity < 0) {
-            throw new IllegalArgumentException("Invalid input for ElectricBicycle");
+            throw new IllegalArgumentException("Niepoprawne dane");
         }
         this.batteryCapacity = batteryCapacity;
     }
@@ -22,10 +22,12 @@ public class ElectricBicycle extends Bicycle {
     @Override
     public String toString() {
         return "ElectricBicycle{" +
-                "batteryCapacity=" + batteryCapacity +
+                "model='" + getModel() + '\'' +
+                ", price=" + getPrice() +
+                ", color='" + getColor() + '\'' +
+                ", size='" + getSize() + '\'' +
+                ", number=" + getNumber() + '\'' +
+                ", batteryCapacity=" + batteryCapacity +
                 '}';
     }
-
-
-
 }
